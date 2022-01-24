@@ -23,9 +23,17 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 
 <br>
 <br>
-<div>Imagens do projeto, RESUMIDO:</div>
+<div>Imagens e vídeo do projeto, RESUMIDO:</div>
 <br>
 <br>
+
+
+
+
+https://user-images.githubusercontent.com/76443540/150790156-ae6d787d-01c8-45a9-acd5-322f978ff9a2.mp4
+
+
+
 
 <div> Configurações no PHPMyAdmin: </div>
 <img src="https://user-images.githubusercontent.com/76443540/150731345-e4517b26-8e0a-4273-a139-60b746ba9927.png" width="200px" height="200px" />
@@ -54,5 +62,8 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 
 <div> Página Login , simples e agradável: </div>
 <img src="https://user-images.githubusercontent.com/76443540/150732931-12f3fbec-1d7d-48b7-b121-53f991316f1d.png" width="800px" height="500px" />
+
+
+
 
 
