@@ -18,9 +18,13 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <br>
 <br>
 <div>Observação Importante:  O PROJETO foi construido utilizando padrão de projeto MVC orientado a POO, Na parte do cadastro , cep, quando usuário digita , se conecta com API dos correios Devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema. </div>
-
+<br>
 <div> Observação Importante: Optei por não utilizar o magento e sim o PHP Nativo, o Raiz, mostrando domínio no desenvolvimento raiz, posso sim, tiver mais tempo , utilizar o magento.  </div>
 
+<br>
+<br>
+<div>Imagens do projeto, RESUMIDO:</div>
+<br>
 <br>
 
 <div> Configurações no PHPMyAdmin: </div>
