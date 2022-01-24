@@ -14,7 +14,7 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 [![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=attila.QRCodeGeradorLeitor&hl=pt_BR&gl=US)
 <br>
 
-<div>Resumo do Desafio: Foi proposto pela Empresa: WK TECHNOLOGY, realizar o desafio Front e back End de um sistema de vendas, no desafio contém requisitos como inserir, listar  na administração do banco de dados phpMyAdmin. </div>
+<div>Resumo do Desafio: Foi proposto pela Empresa: WK TECHNOLOGY, realizar o desafio Front e back End de um sistema de vendas, no desafio contém requisitos como inserir, listar  entre outras regras e na administração do banco de dados phpMyAdmin. </div>
 <br>
 <br>
 <div>Observação Importante: Para o arquivo não ficar muito grande, irei ocultar a partir da segunda pergunta, Prints do  PhpMyAdmin ficando somente o print Front End e devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema.</div>
