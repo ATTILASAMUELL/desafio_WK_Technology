@@ -17,7 +17,7 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <div>Resumo do Desafio: Foi proposto pela Empresa: WK TECHNOLOGY, realizar o desafio Front e back End de um sistema de vendas, no desafio contém requisitos como inserir, listar  entre outras regras e na administração do banco de dados phpMyAdmin. </div>
 <br>
 <br>
-<div>Observação Importante: Para o arquivo não ficar muito grande, irei ocultar a partir da segunda pergunta, Prints do  PhpMyAdmin ficando somente o print Front End e devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema.</div>
+<div>Observação Importante:  o PROJETO foi construido utilizando padrão de projeto MVC orientado a POO, Devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema.</div>
 
 <br>
 
@@ -32,4 +32,14 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <div> Padrão de Projeto MVC: </div>
 <img src="https://user-images.githubusercontent.com/76443540/150731820-605d03a4-9636-48fc-87b7-e06db68c91c4.png" width="400px" height="300px" />
 <br>
+
+<div> Página Principal do Projeto: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150732211-1fc72b9d-c799-4cf3-856c-266d33b00a3b.png" width="600px" height="400px" />
+<br>
+
+<div> Página Administrativa com acesso restrito: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150732391-f5a9b99e-b84d-46dd-aa6e-750c29506d64.png" width="600px" height="500px" />
+
+
+
 
