@@ -17,7 +17,9 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <div>Resumo do Desafio: Foi proposto pela Empresa: WK TECHNOLOGY, realizar o desafio Front e back End de um sistema de vendas, no desafio contém requisitos como inserir, listar  entre outras regras e na administração do banco de dados phpMyAdmin. </div>
 <br>
 <br>
-<div>Observação Importante:  o PROJETO foi construido utilizando padrão de projeto MVC orientado a POO, Devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema.</div>
+<div>Observação Importante:  O PROJETO foi construido utilizando padrão de projeto MVC orientado a POO, Na parte do cadastro , cep, quando usuário digita , se conecta com API dos correios Devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema. </div>
+
+<div> Observação Importante: Optei por não utilizar o magento e sim o PHP Nativo, o Raiz, mostrando domínio no desenvolvimento raiz, posso sim, tiver mais tempo , utilizar o magento.  </div>
 
 <br>
 
@@ -41,5 +43,12 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <img src="https://user-images.githubusercontent.com/76443540/150732391-f5a9b99e-b84d-46dd-aa6e-750c29506d64.png" width="600px" height="500px" />
 
 
+
+
+<div> Página Cadastro conectando com Api dos Correios e campos com mâscara: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150732713-30957d81-ec60-4a19-9535-f01f0a516940.png" width="900px" height="500px" />
+
+<div> Página Login , simples e agradável: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150732931-12f3fbec-1d7d-48b7-b121-53f991316f1d.png" width="800px" height="500px" />
 
 
