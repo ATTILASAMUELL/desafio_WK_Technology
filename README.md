@@ -20,3 +20,16 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 <div>Observação Importante: Para o arquivo não ficar muito grande, irei ocultar a partir da segunda pergunta, Prints do  PhpMyAdmin ficando somente o print Front End e devido ao pouco tempo para criação e testes deste sistema ficou faltando alguma regras de segurança e finalizar o sistema.</div>
 
 <br>
+
+<div> Configurações no PHPMyAdmin: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150731345-e4517b26-8e0a-4273-a139-60b746ba9927.png" width="200px" height="200px" />
+<br>
+
+<div> Tabela no BD Entidade Pedido_Venda: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150731705-14fa748a-e79b-4dca-8745-f7854f5bd0c7.png" width="400px" height="300px" />
+<br>
+
+<div> Padrão de Projeto MVC: </div>
+<img src="https://user-images.githubusercontent.com/76443540/150731820-605d03a4-9636-48fc-87b7-e06db68c91c4.png" width="400px" height="300px" />
+<br>
+
