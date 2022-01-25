@@ -4,7 +4,7 @@ $(document).ready(function(){
     setInterval(()=>{
         carregaProdutos()
 
-    }, 3000);
+    }, 1000);
         
 })  
 
@@ -27,7 +27,7 @@ function carregaProdutos()
             if(data.produtos.length > 0){
             for(var i = 0 ; i < data.produtos.length; i++ )
                 {
-                    $('#coluna').append('<div class="card-group"><div class="card m-1" style="width: 18rem;"><img class="card-img-top" src="'+data.produtos[i].foto+'"  height="150" width="190" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+data.produtos[i].nome+ '</h5><p class="card-text">'+data.produtos[i].descricao+ ' </p><a  class="btn btn-primary">R$ '+data.produtos[i].valor+ '</a><button  onClick="adicionarCarrinho('+data.produtos[i].id+')" class="btn btn-success">Comprar</button></div></div>')
+                    $('#coluna').append('<div class="card-group"><div class="card m-1" style="width: 18rem;"><img class="card-img-top" src="'+data.produtos[i].foto+'"  height="150" width="190" alt="Card image cap"><div class="card-body"><h5 maxlength="17" class="card-title">'+data.produtos[i].nome+ '</h5><p class="card-text" maxlength="19">'+data.produtos[i].descricao+ ' </p><a  class="btn btn-primary" maxlength="7">R$ '+data.produtos[i].valor+ '</a><button  onClick="adicionarCarrinho('+data.produtos[i].id+')" class="btn btn-success">Comprar</button></div></div>')
 
                   
                     //console.log(data.produtos[i].nome_arquivo)

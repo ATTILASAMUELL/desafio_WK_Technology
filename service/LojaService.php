@@ -20,17 +20,20 @@ class Service
             return array( 
             "error" => 1,
             "mensagem" => "Error ao buscar o cep, verifique o cep."
+            
 
         );
         }else{
             return array( "cep"=>$resultado->cep,
             "logradouro" => $resultado->logradouro,
             "bairro" => $resultado->bairro,
+            'cidade' => $resultado->localidade,
             "error" => 0
 
         );
         }
-            
+      
+       
             
             
             

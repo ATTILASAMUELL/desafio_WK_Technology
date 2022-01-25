@@ -63,39 +63,39 @@
             
              <div class="form-group col-md-6">
             <label for="inputEmail4">Nome</label>
-            <input type="email" class="form-control" id="inputNome" placeholder="Nome">
+            <input type="email" minlength="10" maxlength="60"  class="form-control" id="inputNome" placeholder="Nome">
             </div>
             
             <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input type="email"   minlength="5" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
             <div class="form-group col-md-12">
             <label for="inputPassword4">Senha</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
+            <input type="password" minlength="10" maxlength="30" class="form-control" id="inputPassword4" placeholder="Senha">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="inputCpf">CPF</label>
-            <input type="text" onkeyup="mascaraCpf()"  class="form-control" id="cpf" placeholder="CPF">
+            <input type="text" onkeyup="mascaraCpf()" minlength="14"  maxlength="14" class="form-control" id="cpf" placeholder="CPF">
             </div>
 
             <div class="form-group col-md-6">
             <label for="inputDataNascimento">Data de nascimento</label>
-            <input type="text" onkeyup="mascaraData()" class="form-control" id="dataN" placeholder="Data de Nascimento">
+            <input type="text" onkeyup="mascaraData()" minlength="10" maxlength="10" class="form-control" id="dataN" placeholder="Data de Nascimento">
             </div>
            
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="inputCEP">CEP</label>
-            <input  onkeyup="mascEbuscaAPI()" type="text" class="form-control" id="cep" placeholder="Cep">
+            <input  onkeyup="mascEbuscaAPI()" maxlength="9" type="text" class="form-control" id="cep" placeholder="Cep">
             </div>
         
             <div class="form-group col-md-6">
             <label for="inputLogradouro">Logradouro;</label>
-            <input  type="text" class="form-control" id="logradouro" placeholder="Rua dos Bobos, nº 0">
+            <input  type="text" class="form-control" id="logradouro" maxlength="35" placeholder="Rua dos Bobos, nº 0">
             </div>
             
         </div>
@@ -103,12 +103,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="input">Cidade</label>
-            <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+            <input type="text"  maxlength="10" class="form-control" id="cidade" placeholder="Cidade">
             </div>
 
             <div class="form-group col-md-6">
             <label for="inputNumero">Número</label>
-            <input type="text" class="form-control" id="numero" placeholder="Número">
+            <input type="text"  maxlength="10" class="form-control" id="numero" placeholder="Número">
             </div>
            
         </div>
@@ -116,12 +116,12 @@
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="inputComplemento">Complemento</label>
-            <input type="text" class="form-control" id="complemento" placeholder="Complemento">
+            <input type="text"  maxlength="35" class="form-control" id="complemento" placeholder="Complemento">
             </div>
 
             <div class="form-group col-md-6">
             <label for="inputBairro">Bairro</label>
-            <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+            <input type="text"  maxlength="27" class="form-control" id="bairro" placeholder="Bairro">
             </div>
            
         </div>
@@ -307,7 +307,7 @@
 
 
     <!-- JavaScript Validação  Login -->
-    <script src="js/login.js"></script>
+    <script src="js/validacoes.js"></script>
 
     <!-- JavaScript Validação CADASTRO -->
     <script src="js/cadastro.js"></script>

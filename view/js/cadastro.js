@@ -1,17 +1,17 @@
 
 function efetuarcadastro()
 {
+    var autoriza = true;
+    carregaLoading()
     data =  $("#dataN").val();
     formatada = data.replace('/', '')
     formatad = formatada.replace('/', '')
-    cpf=  $('#cpf').val()
-    formataCPF = cpf.replace('.', '')
-    formataCPF2 = cpf.replace('-', '')
+    
     dados = {
         'nome' : $('#inputNome').val(),
         'email' :  $('#inputEmail4').val(),
         'senha' :  $('#inputPassword4').val(),
-        'cep' :   formataCPF2 ,
+        'cep' :    $("#cep").val() ,
         'cidade' : $('#cidade').val(),
         'DataNascimento' :  formatad ,
         'cpf' : $('#cpf').val(),
@@ -20,6 +20,28 @@ function efetuarcadastro()
         'numero' : $('#numero').val(),
         'logradouro' : $('#logradouro').val(),
         'cadastrando' : true
+    }
+
+    if(dados['nome'].length < 5  || dados['email'].length < 5 
+    || dados['senha'].length < 5  || dados['cep'].length < 5
+    || dados['cidade'].length < 5 || dados['DataNascimento'].length < 5
+    || dados['cpf'].length < 5 || dados['complemento'].length < 5
+    || dados['bairro'].length < 5 || dados['numero'].length < 5
+    || dados['logradouro'].length < 5 || dados['cadastrando'].length < 5
+      )
+    {
+        
+        autoriza = false
+        setTimeout(function(){
+            escondeLoading();
+            var mensagem = "Digite os dados corretamente";
+            carregaAlerta(mensagem)
+            limparDadosCadastro();
+           
+     
+        },2000);
+        escondeAlerta();
+        
     }
 
     console.log(typeof(dados['nome']));
@@ -36,54 +58,83 @@ function efetuarcadastro()
 
 
     
-    carregaLoading()
+    if(autoriza){
+        $.ajax({
+            url: 'http://localhost/desafio_wk_technology/controller/lojaController.php',
+            type:'POST',
+            data: dados,
+            success: function(data){
+                setTimeout(function(){
+                    escondeLoading();
+                    if(data.cadastro)
+                    {
+                        carregaSucesso();
+                        limparDadosCadastro();
+                    } else{
+                        var mensagem = "Digite os dados corretamente";
+                        carregaAlerta(mensagem)
+                        limparDadosCadastro();
+                    }
     
-    $.ajax({
-        url: 'http://localhost/desafio_wk_technology/controller/lojaController.php',
-        type:'POST',
-        data: dados,
-        success: function(data){
-            setTimeout(function(){
-                if(data.cadastro)
-                {
-                    carregaSucesso();
-                } else{
-                    carregaAlerta();
-                }
-
-                escondeLoading();
-                
-                console.log(data);
-                
-                
-
-
-
-
-            },2000); // Esse milisegundo (1000) é tempo em milisegundo
-            escondeSucesso();
-            escondeAlerta();
-        },
-        error: function(){
-            carregaAlerta();
-            setTimeout(function(){
+                    
+                    
+                    console.log(data);
+                    
+                    
+    
+    
+    
+    
+                },2000); // Esse milisegundo (1000) é tempo em milisegundo
+                escondeSucesso();
                 escondeAlerta();
-                
-                
+                limparDadosCadastro();
+                $("#exampleModal1").html(data.items); 
+                document.location.reload(true);
+            },
+            error: function(){
+               
+                setTimeout(function(){
+                    escondeLoading();
+                    var mensagem = "Digite os dados corretamente";
+                    carregaAlerta(mensagem)
+                    
+                    
+                    
+    
+    
+    
+    
+                },2000); // Esse milisegundo (1000) é tempo em milisegundo
+                escondeAlerta();
+                limparDadosCadastro();
+    
+            }
+    
+        })
 
-
-
-
-            },2000); // Esse milisegundo (1000) é tempo em milisegundo
-            
-
-        }
-
-    })
+    }
+    
+    
     
 }
 
+function limparDadosCadastro()
+{
+    nome =  $('#inputNome').val(' ') 
+    email = $('#inputEmail4').val(' ')
+    senha = $('#inputPassword4').val(' ') 
+    cep = $('#cep').val(' ')  
+    cidade = $('#cidade').val(' ') 
+    dataNasc =  $('#inputPassword4').val(' ') 
 
+    cpf = $('#dataN').val(' ') 
+    complemento = $('#complemento').val(' ')  
+    bairro = $('#bairro').val(' ') 
+    numero =  $('#numero').val(' ') 
+    logradouro =  $('#logradouro').val(' ') 
+    
+}
 
 function mascaraCpf()
 {
@@ -137,9 +188,11 @@ function mascEbuscaAPI()
                     escondeLoading();
                     console.log(data);
                     var logradouro = data.logradouro;
-                    var cidade = data.bairro;
+                    var bairro = data.bairro;
+                    var cidade = data.cidade;
                     document.getElementById("logradouro").value += logradouro;
                     document.getElementById("cidade").value += cidade;
+                    document.getElementById("bairro").value += bairro;
 
     
     
@@ -159,10 +212,11 @@ function mascEbuscaAPI()
     {
        document.getElementById("cep").value += "-";    }
 }
-function carregaAlerta()
+function carregaAlerta($mensagem)
 {
     var alerta =  document.getElementById('alerta');
     alerta.style.display = "block";
+    alerta.value = $mensagem
 
 }
 function escondeAlerta()
