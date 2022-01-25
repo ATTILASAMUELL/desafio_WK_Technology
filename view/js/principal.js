@@ -2,9 +2,10 @@ $(document).ready(function(){
         
         
     setInterval(()=>{
+        
         carregaProdutos()
 
-    }, 1000);
+    }, 100);
         
 })  
 
@@ -69,6 +70,7 @@ function adicionarCarrinho($id)
         }
     })
 }
+
 
 function sair()
 {

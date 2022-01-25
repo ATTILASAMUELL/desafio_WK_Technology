@@ -85,12 +85,12 @@ class DAO implements Crud
 
         }elseif(!$tipo){
             
-            //define("SALT", uniqid());
+            
             
 
             $email = $cliente->getEmail();
             $senha = strval($cliente->getSenha());
-            //$hash = crypt($senha, SALT);
+            
 
             $query ="SELECT * FROM cliente WHERE email = :email ";
             $buscando = Conexao::Conectar();

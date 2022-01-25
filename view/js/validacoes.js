@@ -13,154 +13,186 @@ function logando()
         
         
 
-        limparCamposLogin()
         
-    },2000);
+        
+    
     
 
-    var realizaLogin = true;
-     
-    valores = {
-        'emailLogin': $('#login').val(),
-        'senhaLogin': $('#senhalogin').val(),
-        'login': true
-    }
+        var realizaLogin = true;
 
-
-    if(valores['emailLogin'].length < 5 || valores['senhaLogin'].length < 5 )
-    {
+        console.log(realizaLogin)
         
+        valores = {
+            'emailLogin': $('#login').val(),
+            'senhaLogin': $('#senhalogin').val(),
+            'login': true
+        }
 
-        realizaLogin = false
-        
 
-       
-        
-       
+        if(valores['emailLogin'].length < 5 || valores['senhaLogin'].length < 5 )
+        {
+            
 
-        setTimeout(function(){
-            escondeAlertaLogin()
-
+            realizaLogin = false
             carregaAlertaLogin()
-
-           
-            
             
 
-            limparCamposLogin()
+        
             
-        },2000);
-
-
-        escondeAlertaLogin()
-
-
         
 
-       
-        console.log('entrou aqui')
-
-        
-        
-        
-
-    }
-    
-    
-    
-    if(realizaLogin)
-    {
-        $.ajax({
-            url: 'http://localhost/desafio_wk_technology/controller/lojaController.php',
-            type:'POST',
-            data: valores,
-            success: function(datas){
+            setTimeout(function(){
                 
+                escondeAlertaLogin()
+
+
                 
-                setTimeout(function(){
-                    escondeLoadinge()
-    
-                    
-                    
-                    if(datas.realiza)
-                    {
-                        if(datas.id == 1)
-                        {
 
-                            
+            
+
+               
+                
+                console.log('entrou aqui 2 set')
+                
+
+                limparCamposLogin()
+                
+            },3000);
 
 
+        }  
 
-                            carregaSucessoLogin()
 
-                            limparCamposLogin()
+            
 
+        
+        console.log('entrou aqui 1 set')
+
+
+        console.log(realizaLogin)
+
+        if(realizaLogin)
+        {
+
+            $.ajax({
+                url: 'http://localhost/desafio_wk_technology/controller/lojaController.php',
+                type:'POST',
+                data: valores,
+                success: function(datas){
                         
+                        
+                    setTimeout(function(){
+                        escondeLoadinge()
 
-                            window.location.href = "http://localhost/desafio_wk_technology/view/paineladministrativo.php";
+                        console.log('Entrou aqui REALIZA LOGIN')
+            
+                            
+                            
+                        if(datas.realiza)
+                        {
+                            carregaSucessoLogin()
+                            setTimeout(function(){
+                                escondeSucessoLogin();
+                                
+                                if(datas.id == 1)
+                                {
+            
+                                        
+                                
+            
+                                    limparCamposLogin()
+            
+                                    setTimeout(function(){
+                                        esconderModalLogin()
+                                        window.location.href = "http://localhost/desafio_wk_technology/view/paineladministrativo.php";
+                                
+
+
+
+                                    },1000);
+                                    
+                                    
+                                   
+                                }else{
+                                    console.log('entrou login normal')
+            
+                                    
+                                    limparCamposLogin()
+
+                                   
+                                    
+                                    
+                                    
+                                    
+                                    
+
+                                }
+                                
+                               
+                                
+                            },2000);
+                            
+                            
+            
                         }else
                         {
-                            
+                            carregaAlertaLogin()
+                            setTimeout( function(){
+                                escondeAlertaLogin()
 
-                            carregaSucessoLogin()
 
-
-                            
-
-                           
-                            limparCamposLogin()
-                            document.location.reload(true);
-    
+                            },2000);
+        
+                            console.log('não logado')
                         }
+            
+            
+                        },2000); // Esse milisegundo (1000) é tempo em milisegundo
+                        escondeAlertaLogin();
+                        limparCamposLogin()
+                        escondeSucessoLogin()
+                    },
+                    error: function(){
+                        escondeLoadinge();
+                        carregaAlertaLogin();
+                       
+                        setTimeout(function(){
+                            escondeAlertaLogin()
+        
+                            
+                            
+                            
+            
+            
+            
+            
+                        },3000); // Esse milisegundo (1000) é tempo em milisegundo
+                       
+                        limparCamposLogin()
                         
-    
-                        console.log('logado')
-                    }else
-                    {
-                        carregaAlertaLogin()
-    
-                        console.log('não logado')
+            
                     }
-                    
-                    
+            
+                })
+            
+        
+        
+        
+        
     
-    
-    
-    
-                },2000); // Esse milisegundo (1000) é tempo em milisegundo
-                escondeAlertaLogin();
-                limparCamposLogin()
-                escondeSucessoLogin()
-            },
-            error: function(){
-                
-               
-                setTimeout(function(){
-                    escondeLoadinge();
-                    carregaAlertaLogin();
+            
 
-                    
-                    
-                    
-    
-    
-    
-    
-                },2000); // Esse milisegundo (1000) é tempo em milisegundo
-                escondeAlertaLogin()
-                limparCamposLogin()
-                
-    
-            }
-    
-        })
-    
+            
+            
+            
 
+        }
 
-
-
-
-    }
+    },2000);
+    
+    
+  
+   
     
 }
 
@@ -202,9 +234,16 @@ function escondeSucessoLogin()
     sucessoLogies.style.display = "none";
 }
 
+function esconderModalLogin(){
+
+    
+    $("[data-dismiss=modal]").trigger({ type: "click" });
+
+}
+
 
 function limparCamposLogin()
 {
-    email = $('#login').val(' ')
-    senha = $('#senhalogin').val(' ') 
+    email = $('#login').val('')
+    senha = $('#senhalogin').val('') 
 }
