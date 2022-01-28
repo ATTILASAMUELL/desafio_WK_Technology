@@ -1,11 +1,17 @@
 <?php
 
+// CORS HEADERS
+header("Access-Control-Allow-Origin: *");
+
+
 //Inicia a Sessão
 
 if(!isset($_SESSION)) 
 { 
     session_start(); 
 } 
+
+
 
 //Inclusão
 
@@ -14,6 +20,10 @@ require_once ("../model/Cliente.php");
 require_once ("../model/Produto.php");
 require_once ("../model/PedidoVenda.php");
 require_once ("../model/Carrinho.php");
+
+
+
+
 
 if(isset($_POST['conectar'])){
     $cep = $_POST['cep'];
@@ -26,9 +36,26 @@ if(isset($_POST['conectar'])){
 }else{
 
 }
+
+if(isset($_POST['deletarItemCarrinho']))
+{
+    deletandoItemCarrinho();
+
+}
 if(isset($_POST['salvarCarrinho']))
 {
     salvarCarrinho();
+}
+if(isset($_POST['listandoCarrinho']))
+{
+    listandoCarrinho();
+
+}
+
+if(isset($_POST['sair']))
+{
+    sairdoSistema();
+
 }
 if(isset($_POST['cadasPro'])){
     
@@ -106,9 +133,24 @@ if(isset($_POST['cadastrando']))
 
 }
 
+if(isset($_POST['fazerPedido']))
+{
+    fazerPedido();
+    
+
+}
+
+if(isset($_POST['listarPedidos']))
+{
+    listarPedidos();
+}
+
 
 function buscarDadosCorreios($cep)
 {
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+
     //Retorno do Json (Validação)
     header('Content-Type: application/json');
 
@@ -119,6 +161,8 @@ function buscarDadosCorreios($cep)
 
 function fazerCadastro($condicao, $valores)
 {
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
     //Retorno do Json (Validação)
     header('Content-Type: application/json');
     
@@ -169,6 +213,8 @@ function realizarLogin($condicao, $valores)
 {
     if($condicao)
     {
+        // CORS HEADERS
+        header("Access-Control-Allow-Origin: *");
         //Retorno do Json (Validação)
         header('Content-Type: application/json');
 
@@ -205,6 +251,8 @@ function realizarLogin($condicao, $valores)
 }
 
 function cadastrarProduto($condicao){
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
     //Retorno do Json (Validação)
     header('Content-Type: application/json');
     $nomeProduto = $_POST['nomeProduto'];
@@ -273,6 +321,8 @@ function cadastrarProduto($condicao){
 
 function buscarProduto()
 {
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
 
     //Retorno do Json (Validação)
     header('Content-Type: application/json');
@@ -288,23 +338,166 @@ function buscarProduto()
 
 function salvarCarrinho()
 {
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
     //Retorno do Json (Validação)
     header('Content-Type: application/json');
 
     $id = $_POST['id'];
     $cliente = $_SESSION['id'];
 
-    $carrinho = new Carrinho;
-    $carrinho->setCliente($cliente);
-    $carrinho->setProduto($id);
-    $carrinho->setQtd(1);
+    if($cliente !=  1)
+    {
+            
+        $carrinho = new Carrinho;
+        $carrinho->setCliente($cliente);
+        $carrinho->setProduto($id);
+        $carrinho->setQtd(1);
 
 
-    $salvandoCarrinho = Service::SalvandoCarrinho($carrinho);
+        $salvandoCarrinho = Service::SalvandoCarrinho($carrinho);
 
-    print json_encode(array('idP'=>$id, 'idC' => $cliente));
+        print json_encode(array('idP'=>$id, 'idC' => $cliente));
+        exit();
+
+    }
+
+   
+
+
+}
+
+function listandoCarrinho()
+{
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+    //Retorno do Json (Validação)
+    header('Content-Type: application/json');
+    $id = $_SESSION['id'];
+
+    if($id)
+    {
+        $itens = Service::buscandoCarrinho();
+        print json_encode(array('valores'=> $itens , 'error' => false));
+        exit();
+
+    }else
+    {
+        print json_encode(array('error'=> true));
+        exit();
+        
+
+    }
+    
+
+
+
+    
+
+
+}
+function deletandoItemCarrinho()
+{
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+    $id = $_POST['idCarr'];
+
+    $carrinhoC = new Carrinho;
+    $carrinhoC->setId($id);
+
+    $deletando = new Service;
+    $deletando-> deletaritemcarrinho( $carrinhoC, true);
+}
+
+function fazerPedido()
+{
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+    //Retorno do Json (Validação)
+    header('Content-Type: application/json');
+
+    $usuario = $_SESSION['id'];
+    $listaPedi = [];
+    $total = 0.0;
+    $data = date("Y-m-d H:i:s");
+
+    $pedidoVenda = new PedidoVenda;
+
+
+    $pegaritens = Service::buscandoCarrinho();
+
+    foreach($pegaritens as $itens)
+    {
+        $listaPedi[] =[
+            'id_produto' => $itens['id_produto'],
+            'nome_produto' =>  $itens['nome'],
+            'quantidade' => $itens['qtd'],
+            'valor' =>  $itens['valor']
+
+        ];
+
+        $total += $itens['valor'];
+        
+
+    };
+
+    $pedidoVenda->setCliente($usuario);
+    $pedidoVenda->setListaPedido($listaPedi);
+    $pedidoVenda->setTotal($total);
+    $pedidoVenda->setData($data);
+    $pedidoVenda->setStatus("Pedido");
+
+    $salvarpedidoVenda = Service::salvarPedidoVenda($pedidoVenda);
+
+    $id = $_SESSION['id'];
+
+    $carrinhoC = new Carrinho;
+    $carrinhoC->setCliente($id);
+
+    $deletando =Service::deletaritemcarrinho($carrinhoC, false);
+    
+
+
+
+    print json_encode(array('pedido'=>  true , 'id' => $id  ));
+    exit();
+
+
+}
+
+
+function listarPedidos()
+{
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+    //Retorno do Json (Validação)
+    header('Content-Type: application/json');
+
+    
+    $pedidosFeito = Service::listarPedidos();
+
+
+     
+    print json_encode(array('valores' => $pedidosFeito  ));
     exit();
 
 
 
+}
+
+
+function sairdoSistema()
+{
+    // CORS HEADERS
+    header("Access-Control-Allow-Origin: *");
+    //Retorno do Json (Validação)
+    header('Content-Type: application/json');
+
+    //destroi seções
+    session_destroy();
+
+    print json_encode(array('redirecionar'=>true));
+    exit();
+    
+    
 }

@@ -28,11 +28,7 @@ class DAO implements Crud
 
             
             
-        $dia = substr($datanascimentodata, 0, 2);
-        $mes = substr($datanascimentodata,2,2);
-        $ano = substr($datanascimentodata,4,4);
-
-        $data_formatada = $ano.'-'.$mes.'-'.$dia;
+        
 
 
 
@@ -46,7 +42,7 @@ class DAO implements Crud
         $prepare->bindParam(":nu",   $numero);
         $prepare->bindParam(":ba",  $bairro );
         $prepare->bindParam(":co",  $complemento);
-        $prepare->bindParam(":dt",  $data_formatada);
+        $prepare->bindParam(":dt",  $datanascimentodata);
         $prepare->bindParam(":em",  $email);
         $prepare->execute();
 

@@ -1,5 +1,9 @@
 <?php
 
+// CORS HEADERS
+header("Access-Control-Allow-Origin: *");
+
+
 if(!isset($_SESSION)) 
 { 
     session_start(); 
@@ -30,6 +34,23 @@ if(!isset($_SESSION['adm'] ))
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        var i = setInterval(function () {
+    
+        clearInterval(i);
+    
+        // O código desejado é apenas isto:
+        
+        document.getElementById("foot").style.display = "block";
+
+        
+
+        }, 100);
+
+    
+
+    </script> 
 </head>
 <body>
 <?php
@@ -44,7 +65,7 @@ if(!isset($_SESSION['adm'] ))
 <form enctype="multipart/form-data">
     <div class="form-group">
         <label for="exampleInputEmail1">Nome Produto</label>
-        <input type="text" class="form-control" id="nomeProduto" aria-describedby="emailHelp" placeholder="Produto">
+        <input type="text" class="form-control" id="nomeProduto" maxlength="17" aria-describedby="emailHelp" placeholder="Produto">
         
     </div>
     
@@ -55,14 +76,33 @@ if(!isset($_SESSION['adm'] ))
 
     <div class="form-group">
         <label for="exampleInputPassword1">Descrição</label>
-        <input type="text" class="form-control" id="descricaoProduto" placeholder="Descrição">
+        <input type="text" class="form-control" id="descricaoProduto" maxlength="19" placeholder="Descrição">
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Preço</label>
-        <input type="text" class="form-control" id="precoProduto" placeholder="Preço">
+        <input type="text" class="form-control" id="precoProduto" maxlength="8" placeholder="Preço">
     </div>
 
+   
+
+
+    <div class="d-flex justify-content-center">
+        <div id="loadingPainelADM" class="spinner-border m-9" role="status">
+        <span class="sr-only ">Loading...</span>
+        </div>
+    </div>
+    <br>
+    <div class="alert alert-success" role="alertlogin" id="sucessoPainel">
+        Produto carregado com sucesso!!!
+    </div>
+
+    <div class="alert alert-danger" role="alertlogin" id="alertaPainel">
+        Digite corretamente os campos, arquivo de imagem aceito jpeg!!!
+    </div>
+    <br>
+
     <button type="button" class="btn btn-primary" onclick="cadastrarProtuto()">Cadastrar</button>
+    
     </form>
 
 
@@ -91,6 +131,10 @@ if(!isset($_SESSION['adm'] ))
 
 
     <h1> Lista de Produtos</h1>
+    <br>
+    <button type="button" class="btn btn-primary" onclick="gerarRelatorioCSV()">Gerar Relatório</button>
+    <br>
+    <br>
 
     <table class="table table-striped table-dark">
     <thead>
@@ -100,18 +144,52 @@ if(!isset($_SESSION['adm'] ))
         <th scope="col">nome</th>
         <th scope="col">foto</th>
         <th scope="col">valor</th>
-        <th scope="col">nome_arquivo</th>
-        <th scope="col">descricao</th>
+        
         </tr>
     </thead>
     <tbody id=bodyTab>
        
        
     </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+
+
+    <h1> Lista de Pedidos</h1>
+    <br>
+    <button type="button" class="btn btn-primary" onclick="gerarRelatorioCSVPedidos()">Gerar Relatório</button>
+    <br>
+    <br>
+
+    <table class="table table-striped table-dark">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">idPedido</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">status</th>
+       
+        </tr>
+    </thead>
+    <tbody id=bodyTabPedidos>
+       
+       
+    </tbody>
+    </table>
 
 </div>
 </div>
-</table>
+
+<br>
+<br>
+<br>
+<?php
+        include_once "include/footer.php";
+?>
+
 
 
 
@@ -126,5 +204,11 @@ if(!isset($_SESSION['adm'] ))
 
 <!-- JavaScript Atualizar Página  -->
 <script src="js/painelADM.js"></script>
+
+<!-- JavaScript Atualizar Página  -->
+<script src="js/gerarCSV.js"></script>
+
+
+
 </body>
 </html>

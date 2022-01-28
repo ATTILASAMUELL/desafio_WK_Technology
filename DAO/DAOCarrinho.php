@@ -10,7 +10,7 @@ if(!isset($_SESSION))
 } 
 
 
-class DAOCarrinho implements CarrinhoCrud
+class DAOCarrinho
 {
 
 
@@ -35,15 +35,86 @@ class DAOCarrinho implements CarrinhoCrud
     {
 
     }
-    function buscar(Carrinho $carrinho)
+    function buscar()
     {
+        $idCliente = $_SESSION['id'];
+        $query = "SELECT * , car.id  AS id_carrinho , prod.id as id_produto FROM carrinho AS car INNER JOIN  produto  AS prod ON (prod.id = car.fk_produtoo) WHERE car.fk_clientee = :id ";
+        $buscando = Conexao::Conectar();
+        $prepare = $buscando->prepare($query);
+        $prepare->bindParam(":id", $idCliente);
+        $prepare->execute();
+        $lista = [];
+
+
+
+        
+        if($prepare->rowCount()>0)
+        {
+            $carrinho = $prepare->fetchAll(PDO::FETCH_ASSOC);
+           
+            foreach($carrinho as $itens)
+            {
+               $lista[] =[
+                   'id' => $itens['id_carrinho'],
+                   'nome' => $itens['nome'],
+                   'qtd' => $itens['qtd']  ,
+                   'valor' =>  $itens['valor']  ,
+                   'descricao' => $itens['descricao'],
+                   'foto' => $itens['foto'] ,
+                   'id_produto' => $itens['id_produto']
+                   
+                  
+                
+
+               ];
+            }
+            return $lista;
+
+        }
 
     }
-    function deletar(Carrinho $carrinho)
+    function deletar(Carrinho $carrinho, $cond)
     {
+        
+
+
+        if($cond)
+        {
+            $id = $carrinho->getId();
+            $query =  "DELETE FROM carrinho WHERE carrinho.id = :id";
+            $buscando = Conexao::Conectar();
+            $prepare = $buscando->prepare($query);
+            $prepare->bindParam(":id", $id);
+            $prepare->execute();
+            return array( 'id'=> $id);
+            
+
+        }else{
+            $id = $carrinho->getCliente();
+
+            $query =  "DELETE FROM carrinho WHERE carrinho.fk_clientee  = :id";
+            $buscando = Conexao::Conectar();
+            $prepare = $buscando->prepare($query);
+            $prepare->bindParam(":id", $id);
+            $prepare->execute();
+
+            return array( 'id'=> $id);
+
+
+
+        }
+
+        
+
+        
+
+
 
     }
 
 
 
 }
+
+
+

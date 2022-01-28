@@ -2,6 +2,7 @@
 require_once ("../DAO/DAO.php");
 require_once ("../DAO/DAOProduto.php");
 require_once ("../DAO/DAOCarrinho.php");
+require_once ("../DAO/DAOPedidoVenda.php");
 if(!isset($_SESSION)) 
 { 
     session_start(); 
@@ -115,6 +116,40 @@ class Service
     }
 
 
+    public static function buscandoCarrinho()
+    {
+        $carrinho = new DAOCarrinho;
+        $valores = $carrinho->buscar();
+        return $valores;
+    }
+
+
+    public static function deletaritemcarrinho(Carrinho $carrinho, $cond)
+    {
+        if($carrinho)
+        {
+            $deletando = new DAOCarrinho;
+            $id = $deletando->deletar($carrinho, $cond);
+            return array( 'id'=> $id['id'] );
+        }
+    }
+
+
+    public static function salvarPedidoVenda(PedidoVenda $pedidoVenda)
+    {
+        $pedidoVendaA = new DAOPedidoVenda;
+
+        $salvandoPedido = $pedidoVendaA->inserir($pedidoVenda);
+    }
+
+    public static function listarPedidos(){
+
+        $cliente = $_SESSION['id'];
+        $buscaPedido = new DAOPedidoVenda();
+
+        $buscar = $buscaPedido->buscar($cliente);
+        return array($buscar);
+    }
 
 
 }

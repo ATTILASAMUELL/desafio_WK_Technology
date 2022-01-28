@@ -3,7 +3,7 @@
 
 class Conexao
 {
-    public static $bd = "mysql:dbname=db_loja_desafio;host=127.0.0.1:3313";
+    public static $bd = "mysql:dbname=db_wktechology_dasafio;host=127.0.0.1:8080";
     public static $root = "root";
     public static $senha = "";
 
