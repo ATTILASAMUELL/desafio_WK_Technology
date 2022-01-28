@@ -10,7 +10,7 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 </div>
 
 [![LinkedIn ](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/attila-samuell-98291216b/)
-[![You Tube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCuX9fZZa3eR4LACYTPVZg5A/videos)
+[![You Tube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=Ri-zuBT2HEM)
 [![Play Store](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://play.google.com/store/apps/details?id=attila.QRCodeGeradorLeitor&hl=pt_BR&gl=US)
 <br>
 
@@ -30,15 +30,19 @@ TesteSqlServer - Empresa WK TECHNOLOGY - Candidato ATTILA SAMUELL NUNES TABORY -
 
 
 
-https://user-images.githubusercontent.com/76443540/150790156-ae6d787d-01c8-45a9-acd5-322f978ff9a2.mp4
+<div> Vídeo Final do projeto, Disponível no YouYube: </div>
+<br>
+
+[![You Tube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=Ri-zuBT2HEM)
+
+
+
+
+
 
 <br>
 <br>
-
-
-https://user-images.githubusercontent.com/76443540/150791643-6a5b95d0-da6e-45fb-803e-8ea71356f845.mp4
-
-
+<br>
 
 
 
