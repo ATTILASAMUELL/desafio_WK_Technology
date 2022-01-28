@@ -1,13 +1,16 @@
 
+
 $(document).ready(function(){
+    listandocarrinho()
         
         
     setInterval(()=>{
         
         carregaProdutos();
         
+        
 
-    }, 3000);
+    }, 1000);
         
 })  
 

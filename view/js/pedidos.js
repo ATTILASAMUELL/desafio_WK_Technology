@@ -104,6 +104,7 @@ function carregarPedidos()
             }else{
                 $('#coln').append(' <div class="d-flex justify-content-center"><p class="h4">Nenhum Pedido Feito</p></div>')
                 $('#colunaPedidos').hide()
+                $('#escondDiv').hide();
                
                 
             }

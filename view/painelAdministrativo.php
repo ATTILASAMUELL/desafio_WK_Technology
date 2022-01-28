@@ -43,10 +43,13 @@ if(!isset($_SESSION['adm'] ))
         // O código desejado é apenas isto:
         
         document.getElementById("foot").style.display = "block";
+        document.getElementById("menuPrincipal").style.display = "block";
 
         
 
-        }, 100);
+        
+
+        }, 1200);
 
     
 

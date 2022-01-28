@@ -30,10 +30,11 @@
         document.getElementById("loadingPedidoPagina").style.display = "none";
         document.getElementById("conteudoPedido").style.display = "block";
         document.getElementById("foot").style.display = "block";
+        document.getElementById("menuPrincipal").style.display = "block";
 
         
 
-        }, 2000);
+        }, 1200);
 
     
 
@@ -101,6 +102,24 @@
     
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="escondDiv">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
     <?php
         include_once "include/footer.php";
     ?>

@@ -44,10 +44,13 @@ header("Access-Control-Allow-Origin: *");
         // O código desejado é apenas isto:
         
         document.getElementById("foot").style.display = "block";
+        document.getElementById("menuPrincipal").style.display = "block";
 
         
 
-        }, 800);
+        
+
+        }, 1200);
 
     
 
